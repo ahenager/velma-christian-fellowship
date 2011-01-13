@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Verification Passcode{% endblock %}
+
+{% block content %}
+<div id="verify">
+    {% if form.errors %}
+    <p>The verification pass-code entered was incorrect.</p>
+    {% endif %}
+
+    <p>Please enter the pass-code for this site.</p>
+
+    <form method="post" action="{% url django.contrib.auth.views.login %}">
+        {% csrf_token %}
+        <input type="hidden" name="{{ form.username.html_name }}" value="default" />
+
+        <label for="{{ form.password.html_name }}">Pass-code:</label>
+        {{ form.password }}
+
+        <input type="submit" value="Verify" />
+        <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <link rel="stylesheet" href="{{ MEDIA_URL }}site/style.css" />
+    <title>{% block title %}Velma Christian Fellowship{% endblock %}</title>
+</head>
+
+<body>
+    <div id="heading">
+        <h1>Velma Christian Fellowship</h1>
+        <div id="navbar">
+            {% block navbar %}
+            <ul>
+                <li><a href="/home/">Home</a></li>
+                <li><a href="/directory/">Directory</a></li>
+                <li><a href="/audio/">Audio</a></li>
+                <li><a href="/admin/">Admin</a></li>
+            </ul>
+            {% endblock %}
+        </div>
+    </div>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

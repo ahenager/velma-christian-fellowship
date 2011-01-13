@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load audioplayer %}
+{% load append_to_get %}
+{% block title %}Church Audio{% endblock %}
+
+{% block content %}
+
+<div id="data_browse">
+    <form action="." method="GET" id="search">
+        <label for="q">Search All: </label>
+        <input type="text" name="q" class="field" value="{{ search_string|escape }}">
+        <input type="submit" value="Go">
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Listen</th>
+                <th>Download</th>
+            </tr>
+        </thead>
+        {% for audio_info in audio_list.object_list %}
+        <tr class="{% cycle 'odd' 'even' %}">
+            <td>{{ audio_info.name }}</td>
+            <td>{{ audio_info.description }}</td>
+            <td class="listen_column">{% audioplayer file=audio_info.file.url,width=186 %}</td>
+            <td class="download_column"><a href="{{ audio_info.file.url }}">Download</a> </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div class="pagination">
+        <span class="step-links">
+            {% if audio_list.has_previous %}
+                <a href="{% append_to_get page=audio_list.previous_page_number %}">Previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ audio_list.number }} of {{ audio_list.paginator.num_pages }}.
+            </span>
+
+            {% if audio_list.has_next %}
+
+                <a href="{% append_to_get page=audio_list.next_page_number %}">Next</a>
+            {% endif %}
+        </span>
+    </div>
+    <div id="categories">
+        <ul class="tags">
+            {% for category_item in category_list %}
+                <li>
+                    <a {% if category_item.id == category %}id="selected" {% endif %}href="?category={{ category_item.id}}">
+                        {{ category_item.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
