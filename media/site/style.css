@@ -23,7 +23,7 @@ div#heading div#navbar ul {
 div#heading div#navbar li {
     float:left;
 }
-div#heading div#navbar a:link,a:visited {
+div#heading div#navbar a {
     display:block;
     width:120px;
     font-weight:bold;
