@@ -11,7 +11,7 @@ class Category(models.Model):
 class AudioMedia(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True)
-    file = models.FileField(upload_to="audio")
+    file = models.FileField(upload_to="audio", blank=True)
     categories = models.ManyToManyField(Category, blank=True)
 
     class Meta:

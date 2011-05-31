@@ -59,7 +59,7 @@ class FamilyMember(models.Model):
     )
 
     family = models.ForeignKey(Family)
-    first_name = models.CharField(max_length=200)
+    first_name = models.CharField(max_length=200,blank=True)
     last_name = models.CharField(max_length=200, default=family.name, blank=True)
     dob = models.DateField(verbose_name="Date of Birth", blank=True, null=True)
     email = models.EmailField(verbose_name="E-Mail", blank=True)
@@ -68,7 +68,7 @@ class FamilyMember(models.Model):
     name_sort = models.IntegerField(editable=False)
 
     def save(self):
-        if self.last_name == "" :
+        if self.last_name == "" and self.member_type is not None :
             self.last_name = self.family.name
 
         if self.last_name == self.family.name:

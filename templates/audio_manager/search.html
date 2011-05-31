@@ -24,8 +24,12 @@
         <tr class="{% cycle 'odd' 'even' %}">
             <td>{{ audio_info.name }}</td>
             <td>{{ audio_info.description }}</td>
-            <td class="listen_column">{% audioplayer file=audio_info.file.url,width=186 %}</td>
-            <td class="download_column"><a href="{{ audio_info.file.url }}">Download</a> </td>
+            <td class="listen_column">
+                {% if audio_info.file %}{% audioplayer file=audio_info.file.url,width=186 %}{% endif %}
+            </td>
+            <td class="download_column">
+                {% if audio_info.file %}<a href="{{ audio_info.file.url }}">Download</a>{% endif %}
+            </td>
         </tr>
         {% endfor %}
     </table>

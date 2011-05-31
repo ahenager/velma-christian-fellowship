@@ -32,7 +32,7 @@
             <td>
                 {% for member_info in family_info.members_with_phones %}
                     {{ member_info.phone }}
-                    {% if family_info.members_with_phones.count > 1 %}
+                    {% if family_info.members_with_phones.count > 1 and member_info.first_name != '' %}
                         ({{ member_info.first_name }}) </br>
                     {% endif %}
                 {% endfor %}
@@ -40,7 +40,7 @@
             <td>
                 {% for member_info in family_info.members_with_email %}
                     {{ member_info.email }}
-                    {% if family_info.members_with_email.count > 1 %}
+                    {% if family_info.members_with_email.count > 1  and member_info.first_name != '' %}
                         ({{ member_info.first_name }}) </br>
                     {% endif %}
                 {% endfor %}
