@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <link rel="stylesheet" href="{{ MEDIA_URL }}site/print.css" />
+    <title>{% block title %}Velma Christian Fellowship{% endblock %}</title>
+</head>
+
+<body>
+<table>
+    <div class="page">
+    <tr>
+    {% for family_info in family_list %}
+        {% if forloop.counter0|divisibleby:"2" and not forloop.first %}
+    </tr>
+        {% if forloop.counter0|divisibleby:"5" %}
+    </div>
+    <div class="page">
+        {% endif %}
+    <tr>
+        {% endif %}
+        <td>
+            {{ family_info }} <br/>
+            {% if family_info.address1 != "" %} {{ family_info.address1 }} <br/>{% endif %}
+            {% if family_info.address2 != "" %} {{ family_info.address2 }} <br/>{% endif %}
+            {% if family_info.city != "" %} {{ family_info.city }}{% endif %}{% if family_info.state != "" %}, {{ family_info.state }} {% endif %}
+            {% if family_info.zip != "" %} {{ family_info.zip }} {% endif %}
+            {% if family_info.members_with_phones.count > 0 %}<br/>{% endif %}
+            {% for member_info in family_info.members_with_phones %}
+                {{ member_info.phone }}
+                {% if family_info.members_with_phones.count > 1 and member_info.first_name != '' %}
+                    ({{ member_info.first_name }})
+                {% endif %}
+                {% if not forloop.last or family_info.members_with_email.count > 0 %}<br/> {% endif %}
+            {% endfor %}
+            {% for member_info in family_info.members_with_email %}
+                {{ member_info.email }}
+                {% if family_info.members_with_email.count > 1  and member_info.first_name != '' %}
+                    ({{ member_info.first_name }})
+                {% endif %}
+                {% if not forloop.last %}<br/> {% endif %}
+            {% endfor %}
+        </td>
+    {% endfor %}
+    </tr></div>
+</table>
+</body>
+</html>

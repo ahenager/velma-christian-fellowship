@@ -15,3 +15,11 @@ def search(request):
                               { 'search_string': browse_helper.search_string,
                                 'family_list': browse_helper.result_list},
                               context_instance=RequestContext(request))
+
+@login_required
+def print_directory(request):
+    family_fetch = Family.objects.all().order_by("indexed_name")
+
+    return render_to_response('family_manager/print.html',
+                              { 'family_list': family_fetch },
+                              context_instance=RequestContext(request))

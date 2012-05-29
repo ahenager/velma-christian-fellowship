@@ -1,0 +1,16 @@
+* {
+    font-family: sans-serif;
+}
+
+table {
+    width: 90%;
+    margin: auto;
+}
+
+td {
+    padding-top: 2em;
+}
+
+div.page {
+    page-break-after: always;
+}

@@ -7,8 +7,8 @@
 
 <div id="data_browse">
     <form action="." method="GET" id="search">
-        <label for="q">Search All: </label>
-        <input type="text" name="q" class="field" value="{{ search_string|escape }}">
+        <label for="searchBox">Search All: </label>
+        <input type="text" id="searchBox" name="q" class="field" value="{{ search_string|escape }}">
         <input type="submit" value="Go">
     </form>
     <table>
@@ -61,4 +61,12 @@
         </ul>
     </div>
 </div>
+{% if user.is_staff %}
+<div id="staff_options">
+    <ul >
+        <li><a href="clean/">Clean</a></li>
+        <li><a href="import/">Import</a></li>
+    </ul>
+</div>
+{% endif %}
 {% endblock %}

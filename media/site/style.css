@@ -154,6 +154,24 @@ div#data_browse form#search input.field {
     width:25%;
 }
 
+div#data_browse div#categories {
+    padding-bottom: 2em;
+}
+
+div#staff_options {
+    text-align: center;
+}
+
+div#staff_options ul {
+    list-style-type:none;
+}
+
+div#staff_options li {
+    display: inline;
+    margin-left:.5em;
+    margin-right:.5em;
+}
+
 ul.tags {
     list-style-type:none;
 }

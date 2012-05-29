@@ -5,8 +5,8 @@
 {% block content %}
     <div id="data_browse">
     <form action="." method="GET" id="search">
-        <label for="q">Search All: </label>
-        <input type="text" name="q" class="field" value="{{ search_string|escape }}">
+        <label for="searchBox">Search All: </label>
+        <input type="text" id="searchBox" name="q" class="field" value="{{ search_string|escape }}">
         <input type="submit" value="Go">
     </form>
     <table>
@@ -23,8 +23,8 @@
         <tr class="{% cycle 'odd' 'even' %}">
             <td>{{ family_info }}</td>
             <td>
-                {% if family_info.address1 != "" %} {{ family_info.address1 }} </br>{% endif %}
-                {% if family_info.address2 != "" %} {{ family_info.address2 }} </br>{% endif %}
+                {% if family_info.address1 != "" %} {{ family_info.address1 }} <br/>{% endif %}
+                {% if family_info.address2 != "" %} {{ family_info.address2 }} <br/>{% endif %}
                 {% if family_info.city != "" %} {{ family_info.city }}{% endif %}
                 {% if family_info.state != "" %}, {{ family_info.state }} {% endif %}
                 {% if family_info.zip != "" %} {{ family_info.zip }} {% endif %}
@@ -33,7 +33,7 @@
                 {% for member_info in family_info.members_with_phones %}
                     {{ member_info.phone }}
                     {% if family_info.members_with_phones.count > 1 and member_info.first_name != '' %}
-                        ({{ member_info.first_name }}) </br>
+                        ({{ member_info.first_name }}) <br/>
                     {% endif %}
                 {% endfor %}
             </td>
@@ -41,7 +41,7 @@
                 {% for member_info in family_info.members_with_email %}
                     {{ member_info.email }}
                     {% if family_info.members_with_email.count > 1  and member_info.first_name != '' %}
-                        ({{ member_info.first_name }}) </br>
+                        ({{ member_info.first_name }}) <br/>
                     {% endif %}
                 {% endfor %}
             </td>
@@ -63,5 +63,6 @@
                 <a href="{% append_to_get page=family_list.next_page_number %}">Next</a>
             {% endif %}
         </span>
+    </div>
     </div>
 {% endblock %}
