@@ -3,7 +3,7 @@ import os
 import re
 import dateutil.parser as dparser
 import shutil
-import settings
+from vcf import settings
 from UserDict import UserDict
 from models import AudioMedia, Category
 
@@ -50,7 +50,7 @@ def do_import():
     messages = []
 
     listing = os.listdir(source)
-    messages.append('Beginning import of ' + str(listing.count()) + ' files.')
+    messages.append('Beginning import of ' + str(len(listing)) + ' files.')
     for infile in listing:
         messages.append('Importing ' + infile)
         info = dict()

@@ -1,9 +1,8 @@
 import os
-from sets import Set
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.template.context import RequestContext
-from audio_manager import audio_import
+import audio_import
 from models import AudioMedia, Category
 from django.shortcuts import render_to_response
 from vcf.util.search import SearchableBrowse
