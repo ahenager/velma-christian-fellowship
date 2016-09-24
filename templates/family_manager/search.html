@@ -9,6 +9,9 @@
         <input type="text" id="searchBox" name="q" class="field" value="{{ search_string|escape }}">
         <input type="submit" value="Go">
     </form>
+    <div id="print-link">
+        <a href="/directory/print/" target="_blank">Print All</a>
+    </div>
     <table>
         <thead>
             <tr>
@@ -30,9 +33,10 @@
                 {% if family_info.zip != "" %} {{ family_info.zip }} {% endif %}
             </td>
             <td>
+                {% if family_info.home_phone != "" %} {{ family_info.home_phone }} (Home Phone) {% if family_info.members_with_phones.count > 0 %}<br/>{% endif %} {% endif %}
                 {% for member_info in family_info.members_with_phones %}
                     {{ member_info.phone }}
-                    {% if family_info.members_with_phones.count > 1 and member_info.first_name != '' %}
+                    {% if member_info.first_name != ''%}
                         ({{ member_info.first_name }}) <br/>
                     {% endif %}
                 {% endfor %}

@@ -149,9 +149,15 @@ div#data_browse div.pagination a {
 }
 div#data_browse form#search {
     margin-bottom:.5em;
+    width:50%;
+    float:left;
 }
 div#data_browse form#search input.field {
-    width:25%;
+    width:50%;
+}
+
+div#print-link {
+    text-align: right;
 }
 
 div#data_browse div#categories {

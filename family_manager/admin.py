@@ -8,5 +8,5 @@ class FamilyAdmin(admin.ModelAdmin):
     inlines = [
         FamilyMemberInline,
     ]
-
+    ordering = ['indexed_name']
 admin.site.register(Family,FamilyAdmin)

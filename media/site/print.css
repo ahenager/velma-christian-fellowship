@@ -1,16 +1,27 @@
-* {
-    font-family: sans-serif;
+@media all {
+    * {
+        page-break-before:avoid;
+        page-break-after:avoid;
+        page-break-inside: avoid;
+        font-family: sans-serif;
+    }
+    table.directory {
+        width: 90%;
+        margin: auto;
+    }
+
+    table.inner-table td {
+        padding-top: 2em;
+    }
 }
 
-table {
-    width: 90%;
-    margin: auto;
-}
+@media print {
+    table.directory {
+        page-break-inside:auto;
+    }
 
-td {
-    padding-top: 2em;
-}
-
-div.page {
-    page-break-after: always;
+    table.directory tr {
+        page-break-inside:avoid;
+        page-break-after:auto
+    }
 }

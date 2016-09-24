@@ -7,6 +7,7 @@ class Family(models.Model):
     city = models.CharField(max_length=200, blank=True)
     state = models.CharField(max_length=2, blank=True)
     zip = models.CharField(max_length=10, blank=True)
+    home_phone = models.CharField(max_length=13, blank=True)
     anniversary = models.DateField(verbose_name="Anniversary Date", blank=True, null=True)
     indexed_name = models.CharField(max_length=500, editable=False)
 
